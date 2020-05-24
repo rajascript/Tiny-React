@@ -6,8 +6,8 @@ const root = document.getElementById("root");
 
 let base = (
   <div>
-    <h1>I am a react element</h1>
+    <h1 onClick={() => alert("ssup")}>I am a react element</h1>
   </div>
 );
 
-console.log(base);
+TinyReact.render(base, root);
