@@ -7,7 +7,16 @@ const root = document.getElementById("root");
 let base = (
   <div>
     <h1 onClick={() => alert("ssup")}>I am a react element</h1>
+    <h2 onClick={() => alert("ssup")}>I shoudl be gone</h2>
+  </div>
+);
+
+let updatedView = (
+  <div>
+    <h1 onClick={() => alert("ssup")}>I am updated react element</h1>
   </div>
 );
 
 TinyReact.render(base, root);
+
+setTimeout(() => TinyReact.render(updatedView, root), 3000);
