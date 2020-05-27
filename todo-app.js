@@ -17,6 +17,12 @@ let updatedView = (
   </div>
 );
 
-TinyReact.render(base, root);
+const Heart = (props) => <span style={props.style}>Hearts</span>;
+const Greeting = (props) => (
+  <div className="greeting">
+    <h2>Welcome {props.message}</h2>
+    <Heart />
+  </div>
+);
 
-setTimeout(() => TinyReact.render(updatedView, root), 3000);
+TinyReact.render(<Greeting message="ssup" />, root);
