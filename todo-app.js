@@ -20,9 +20,62 @@ let updatedView = (
 const Heart = (props) => <span style={props.style}>Hearts</span>;
 const Greeting = (props) => (
   <div className="greeting">
-    <h2>Welcome {props.message}</h2>
-    <Heart />
+    <p>one</p>
+    <p>two</p>
   </div>
 );
 
-TinyReact.render(<Greeting message="ssup" />, root);
+class Alert extends TinyReact.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      title: "Default title",
+    };
+  }
+  render() {
+    return (
+      <div>
+        <h1>{this.state.title}</h1>
+        <button onClick={() => this.setState({ title: "updated title" })}>
+          Update
+        </button>
+        <h2>{this.props.message}</h2>
+      </div>
+    );
+  }
+}
+
+class Wishlist extends TinyReact.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      title: "I;mma dev",
+    };
+    this.update = this.update.bind(this);
+  }
+  update() {
+    let title = this.inputwish.value;
+
+    this.setState({ title });
+  }
+  render() {
+    return (
+      <div>
+        <h1>Your wishlist</h1>
+        <input
+          type="text"
+          ref={(ref) => (this.inputwish = ref)}
+          placeholder="enter wish"
+        />
+        <button onClick={this.update}>Update</button>
+        <h2>{this.props.message}</h2>
+        <p>{this.state.title}</p>
+      </div>
+    );
+  }
+}
+
+//TinyReact.render(<Wishlist />, root);
+TinyReact.render(<Greeting />, root);
+
+setTimeout(() => TinyReact.render(<Wishlist />, root), 4000);
